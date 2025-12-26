@@ -1,0 +1,2342 @@
+<!doctype html>
+<html lang="fa" dir="rtl" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>امیر نصرت زهی | خدمات توسعه وب حرفه‌ای در سراوان</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Vazirmatn', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-dark: #0a0a1a;
+            --bg-darker: #050510;
+            --surface: #1a1a2e;
+            --surface-light: #252540;
+            --text: #ffffff;
+            --text-muted: #a0a0b0;
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+        }
+        
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 50%, var(--bg-darker) 100%);
+            color: var(--text);
+        }
+        
+        .app-wrapper {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.6); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+        .animate-slide-in { animation: slideIn 0.6s ease-out forwards; }
+        .animate-glow { animation: glow 3s ease-in-out infinite; }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+        .animate-pulse-soft { animation: pulse 3s ease-in-out infinite; }
+        .animate-rotate { animation: rotate 20s linear infinite; }
+        .animate-shimmer { animation: shimmer 2s infinite linear; }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 18px 36px;
+            border-radius: 14px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-size: 18px;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.5);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-secondary {
+            background: rgba(99, 102, 241, 0.1);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 18px 36px;
+            border-radius: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(99, 102, 241, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .btn-danger {
+            background: rgba(239, 68, 68, 0.1);
+            border: 2px solid var(--error);
+            color: var(--error);
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-danger:hover {
+            background: var(--error);
+            color: white;
+        }
+        
+        .btn-success {
+            background: rgba(16, 185, 129, 0.1);
+            border: 2px solid var(--success);
+            color: var(--success);
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-success:hover {
+            background: var(--success);
+            color: white;
+        }
+        
+        .card {
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 40px;
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.4s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 16px 20px;
+            background: var(--surface-light);
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 17px;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 25px rgba(99, 102, 241, 0.3);
+        }
+        
+        input::placeholder, textarea::placeholder {
+            color: var(--text-muted);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: var(--text);
+            font-size: 16px;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-150%);
+            background: var(--surface);
+            padding: 24px 40px;
+            border-radius: 14px;
+            border: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            z-index: 10000;
+            opacity: 0;
+            transition: all 0.4s ease;
+            min-width: 400px;
+            box-shadow: 0 12px 50px rgba(0, 0, 0, 0.6);
+            font-size: 17px;
+        }
+        
+        .notification.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+        
+        .notification.success { border-color: var(--success); }
+        .notification.error { border-color: var(--error); }
+        .notification.warning { border-color: var(--warning); }
+        
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            cursor: pointer;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 6px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .logo-img {
+                width: 45px;
+                height: 45px;
+            }
+            
+            h1 { font-size: 2.5rem !important; }
+            h2 { font-size: 2rem !important; }
+            h3 { font-size: 1.75rem !important; }
+            
+            .card { padding: 24px; }
+            
+            .btn-primary, .btn-secondary {
+                padding: 14px 28px;
+                font-size: 16px;
+            }
+            
+            .notification {
+                min-width: 300px;
+                font-size: 15px;
+            }
+        }
+        
+        nav {
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+        }
+        
+        .nav-link {
+            color: var(--text);
+            padding: 10px 18px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 17px;
+            font-weight: 600;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+        
+        .nav-link.active {
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.2);
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 350px;
+            height: 100%;
+            background: var(--surface);
+            z-index: 9999;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -5px 0 40px rgba(0, 0, 0, 0.7);
+        }
+        
+        .mobile-menu.open {
+            right: 0;
+        }
+        
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .mobile-overlay.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .page {
+            display: none;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .pricing-card {
+            background: var(--surface);
+            border-radius: 24px;
+            padding: 48px;
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--primary);
+            box-shadow: 0 25px 60px rgba(99, 102, 241, 0.4);
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, var(--surface) 0%, rgba(236, 72, 153, 0.1) 100%);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.08) translateY(-12px);
+        }
+        
+        .pricing-card.featured::before {
+            content: 'پیشنهاد ویژه';
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            background: var(--accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        
+        .portfolio-item:hover {
+            transform: scale(1.08);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.95), rgba(139, 92, 246, 0.95));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .testimonial-card {
+            background: var(--surface);
+            border-radius: 24px;
+            padding: 40px;
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -24px;
+            right: 24px;
+            font-size: 120px;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        
+        .service-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover .service-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+        
+        .tech-badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 15px;
+            margin: 5px;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .tech-badge:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .stats-number {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 16px;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+            font-size: 22px;
+        }
+        
+        .contact-info-card {
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-light) 100%);
+            border-radius: 24px;
+            padding: 40px;
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.4s ease;
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            margin-bottom: 20px;
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        .map-card {
+            background: var(--surface);
+            border-radius: 24px;
+            padding: 40px;
+            border: 2px solid rgba(99, 102, 241, 0.2);
+            text-align: center;
+        }
+        
+        .map-icon-large {
+            width: 160px;
+            height: 160px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            margin: 0 auto 28px;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .location-detail-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border-radius: 20px;
+            padding: 28px;
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .location-detail-card:hover {
+            transform: scale(1.08);
+            border-color: var(--primary);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.4);
+        }
+        
+        .spinner {
+            width: 22px;
+            height: 22px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: rotate 1s linear infinite;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            padding: 30px;
+            overflow-y: auto;
+        }
+        
+        .modal-overlay.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .modal-content {
+            background: var(--surface);
+            border-radius: 28px;
+            max-width: 1000px;
+            width: 100%;
+            border: 3px solid var(--primary);
+            transform: scale(0.85);
+            transition: transform 0.4s ease;
+            max-height: 90%;
+            overflow-y: auto;
+        }
+        
+        .modal-overlay.show .modal-content {
+            transform: scale(1);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 16px;
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 18px;
+            text-align: center;
+            font-weight: 800;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            font-size: 17px;
+        }
+        
+        .comparison-table td {
+            padding: 16px;
+            text-align: center;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+        
+        .comparison-table tr:hover {
+            background: rgba(99, 102, 241, 0.15);
+        }
+        
+        .check-icon {
+            color: var(--success);
+            font-size: 24px;
+        }
+        
+        .cross-icon {
+            color: var(--error);
+            font-size: 24px;
+        }
+        
+        .dashboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+        }
+        
+        .dashboard-table th {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 16px;
+            text-align: right;
+            font-weight: 700;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            font-size: 16px;
+        }
+        
+        .dashboard-table td {
+            padding: 14px 16px;
+            text-align: right;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            background: var(--surface-light);
+        }
+        
+        .dashboard-table tr:hover td {
+            background: rgba(99, 102, 241, 0.1);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .badge-success {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .empty-state-icon {
+            font-size: 100px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <body class="h-full">
+  <div class="app-wrapper">
+   <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+   <div class="mobile-menu" id="mobileMenu">
+    <div class="p-8">
+     <div class="flex justify-between items-center mb-10">
+      <h3 class="text-2xl font-bold">منوی اصلی</h3><button onclick="closeMobileMenu()" class="text-4xl">×</button>
+     </div>
+     <nav class="flex flex-col gap-4"><button onclick="navigateTo('home')" class="nav-link text-right w-full">🏠 صفحه اصلی</button> <button onclick="navigateTo('services')" class="nav-link text-right w-full">⚙️ خدمات ما</button> <button onclick="navigateTo('portfolio')" class="nav-link text-right w-full">💼 نمونه کارها</button> <button onclick="navigateTo('pricing')" class="nav-link text-right w-full">💰 قیمت‌ها</button> <button onclick="navigateTo('testimonials')" class="nav-link text-right w-full">💬 نظرات مشتریان</button> <button onclick="navigateTo('about')" class="nav-link text-right w-full">📖 درباره ما</button> <button onclick="navigateTo('contact')" class="nav-link text-right w-full">📞 تماس با ما</button>
+     </nav>
+    </div>
+   </div>
+   <div id="notification" class="notification"><span id="notifIcon" class="text-3xl">✓</span> <span id="notifText"></span>
+   </div>
+   <div id="portfolioModal" class="modal-overlay" onclick="closePortfolioModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+     <div id="portfolioModalContent"></div>
+    </div>
+   </div>
+   <header class="sticky top-0 z-50">
+    <nav class="px-8 py-5">
+     <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-5"><img src="https://i.imgur.com/lKEPjy8.jpeg" alt="لوگوی امیر نصرت زهی" class="logo-img animate-glow" onclick="handleLogoClick()" onerror="this.style.display='none';">
+       <div>
+        <h1 class="text-2xl md:text-3xl font-bold" id="siteTitle">امیر نصرت زهی</h1>
+        <p class="text-sm md:text-base text-gray-400">خدمات وب حرفه‌ای</p>
+       </div>
+      </div>
+      <div class="hidden lg:flex items-center gap-5"><button onclick="navigateTo('home')" class="nav-link">صفحه اصلی</button> <button onclick="navigateTo('services')" class="nav-link">خدمات</button> <button onclick="navigateTo('portfolio')" class="nav-link">نمونه کارها</button> <button onclick="navigateTo('pricing')" class="nav-link">قیمت‌ها</button> <button onclick="navigateTo('testimonials')" class="nav-link">نظرات</button> <button onclick="navigateTo('about')" class="nav-link">درباره ما</button> <button onclick="navigateTo('contact')" class="btn-primary">تماس با ما</button>
+      </div><button onclick="openMobileMenu()" class="lg:hidden text-4xl">☰</button>
+     </div>
+    </nav>
+   </header>
+   <main class="w-full">
+    <div id="page-home" class="page active">
+     <section class="min-h-screen flex items-center justify-center px-6 py-32">
+      <div class="max-w-7xl mx-auto text-center">
+       <div class="animate-fade-in">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-12 leading-tight"><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400" id="heroTitle"> بهترین خدمات توسعه وب در سراوان </span></h1>
+        <p class="text-3xl md:text-4xl text-gray-300 mb-20 max-w-5xl mx-auto leading-relaxed" id="heroSubtitle">وب سایت، اپلیکیشن و فروشگاه آنلاین شما را با کیفیت بالا و قیمت مناسب می‌سازیم</p>
+        <div class="flex flex-wrap gap-8 justify-center"><button onclick="navigateTo('contact')" class="btn-primary text-2xl px-16 py-6" id="ctaButton"> همین حالا سفارش دهید </button> <button onclick="navigateTo('pricing')" class="btn-secondary text-2xl px-16 py-6"> مشاهده قیمت‌ها </button>
+        </div>
+       </div>
+       <div class="grid md:grid-cols-3 gap-12 mt-32">
+        <div class="card animate-float" style="animation-delay: 0s;">
+         <div class="text-9xl mb-8">
+          🚀
+         </div>
+         <h3 class="text-4xl font-bold mb-6">سرعت بالا</h3>
+         <p class="text-gray-400 text-xl leading-relaxed">وب سایت‌های بهینه شده با سرعت بارگذاری کمتر از 2 ثانیه</p>
+        </div>
+        <div class="card animate-float" style="animation-delay: 0.2s;">
+         <div class="text-9xl mb-8">
+          💎
+         </div>
+         <h3 class="text-4xl font-bold mb-6">طراحی حرفه‌ای</h3>
+         <p class="text-gray-400 text-xl leading-relaxed">رابط کاربری مدرن و زیبا متناسب با نیاز شما</p>
+        </div>
+        <div class="card animate-float" style="animation-delay: 0.4s;">
+         <div class="text-9xl mb-8">
+          🔒
+         </div>
+         <h3 class="text-4xl font-bold mb-6">امنیت کامل</h3>
+         <p class="text-gray-400 text-xl leading-relaxed">محافظت از داده‌ها با بالاترین استانداردهای امنیتی</p>
+        </div>
+       </div>
+      </div>
+     </section>
+     <section class="px-6 py-32 bg-gradient-to-b from-transparent to-indigo-900/20">
+      <div class="max-w-7xl mx-auto">
+       <h2 class="text-6xl md:text-7xl font-bold text-center mb-24">آمار و ارقام</h2>
+       <div class="grid md:grid-cols-4 gap-12">
+        <div class="card text-center">
+         <div class="stats-number mb-5" style="font-size: 5rem;">
+          150+
+         </div>
+         <p class="text-3xl text-gray-300">پروژه موفق</p>
+        </div>
+        <div class="card text-center">
+         <div class="stats-number mb-5" style="font-size: 5rem;">
+          120+
+         </div>
+         <p class="text-3xl text-gray-300">مشتری راضی</p>
+        </div>
+        <div class="card text-center">
+         <div class="stats-number mb-5" style="font-size: 5rem;">
+          5+
+         </div>
+         <p class="text-3xl text-gray-300">سال تجربه</p>
+        </div>
+        <div class="card text-center">
+         <div class="stats-number mb-5" style="font-size: 5rem;">
+          98%
+         </div>
+         <p class="text-3xl text-gray-300">رضایت مشتریان</p>
+        </div>
+       </div>
+      </div>
+     </section>
+     <section class="px-6 py-32">
+      <div class="max-w-7xl mx-auto">
+       <div class="text-center mb-24">
+        <h2 class="text-6xl md:text-7xl font-bold mb-8">چرا امیر نصرت زهی؟</h2>
+        <p class="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">دلایل انتخاب ما برای پروژه‌های دیجیتال شما</p>
+       </div>
+       <div class="grid md:grid-cols-2 gap-12">
+        <div class="card bg-gradient-to-br from-indigo-900/30 to-blue-900/30">
+         <div class="text-8xl mb-6">
+          ⚡
+         </div>
+         <h3 class="text-4xl font-bold mb-6">تحویل سریع پروژه</h3>
+         <p class="text-xl text-gray-300 leading-relaxed mb-6">ما متعهد به زمان‌بندی مشخص هستیم و پروژه شما را در سریع‌ترین زمان ممکن با بالاترین کیفیت تحویل می‌دهیم. تیم حرفه‌ای ما 24 ساعته در حال کار است.</p>
+         <ul class="feature-list text-lg">
+          <li>برنامه‌ریزی دقیق زمانی</li>
+          <li>گزارش پیشرفت روزانه</li>
+          <li>تحویل به موقع تضمینی</li>
+         </ul>
+        </div>
+        <div class="card bg-gradient-to-br from-purple-900/30 to-pink-900/30">
+         <div class="text-8xl mb-6">
+          💰
+         </div>
+         <h3 class="text-4xl font-bold mb-6">قیمت‌های رقابتی</h3>
+         <p class="text-xl text-gray-300 leading-relaxed mb-6">با بهترین قیمت در بازار، خدمات با کیفیت بالا دریافت کنید. ما معتقدیم کیفیت نباید گران باشد. امکان پرداخت اقساطی نیز برای راحتی شما فراهم است.</p>
+         <ul class="feature-list text-lg">
+          <li>قیمت‌گذاری شفاف و منصفانه</li>
+          <li>امکان پرداخت اقساطی</li>
+          <li>تخفیف‌های ویژه</li>
+         </ul>
+        </div>
+        <div class="card bg-gradient-to-br from-green-900/30 to-teal-900/30">
+         <div class="text-8xl mb-6">
+          🎨
+         </div>
+         <h3 class="text-4xl font-bold mb-6">طراحی اختصاصی</h3>
+         <p class="text-xl text-gray-300 leading-relaxed mb-6">هر پروژه را به صورت کاملا اختصاصی و منحصر به فرد طراحی می‌کنیم. ما از قالب‌های آماده استفاده نمی‌کنیم و همه چیز را بر اساس نیاز شما می‌سازیم.</p>
+         <ul class="feature-list text-lg">
+          <li>طراحی یونیک و اختصاصی</li>
+          <li>تطابق با هویت برند شما</li>
+          <li>UI/UX حرفه‌ای</li>
+         </ul>
+        </div>
+        <div class="card bg-gradient-to-br from-orange-900/30 to-red-900/30">
+         <div class="text-8xl mb-6">
+          🛡️
+         </div>
+         <h3 class="text-4xl font-bold mb-6">پشتیبانی مادام‌العمر</h3>
+         <p class="text-xl text-gray-300 leading-relaxed mb-6">پس از تحویل پروژه، همیشه در کنار شما هستیم. پشتیبانی فنی، بروزرسانی، رفع مشکلات و آموزش کامل سیستم را به صورت رایگان ارائه می‌دهیم.</p>
+         <ul class="feature-list text-lg">
+          <li>پشتیبانی 24/7</li>
+          <li>بروزرسانی‌های رایگان</li>
+          <li>آموزش کامل سیستم</li>
+         </ul>
+        </div>
+       </div>
+      </div>
+     </section>
+     <section class="px-6 py-32 bg-gradient-to-b from-indigo-900/20 to-transparent">
+      <div class="max-w-7xl mx-auto">
+       <div class="text-center mb-24">
+        <h2 class="text-6xl md:text-7xl font-bold mb-8">فرآیند کار ما</h2>
+        <p class="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">از ایده تا اجرا، قدم به قدم با شما همراه هستیم</p>
+       </div>
+       <div class="grid md:grid-cols-4 gap-8">
+        <div class="card text-center">
+         <div class="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center text-6xl font-bold">
+          1
+         </div>
+         <h3 class="text-3xl font-bold mb-5">مشاوره رایگان</h3>
+         <p class="text-xl text-gray-300 leading-relaxed">ابتدا نیازهای شما را بررسی می‌کنیم و بهترین راه‌حل را پیشنهاد می‌دهیم</p>
+        </div>
+        <div class="card text-center">
+         <div class="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-6xl font-bold">
+          2
+         </div>
+         <h3 class="text-3xl font-bold mb-5">طراحی و برنامه‌ریزی</h3>
+         <p class="text-xl text-gray-300 leading-relaxed">طرح اولیه و نقشه راه پروژه را آماده کرده و با شما به اشتراک می‌گذاریم</p>
+        </div>
+        <div class="card text-center">
+         <div class="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-pink-500 to-red-500 rounded-full flex items-center justify-center text-6xl font-bold">
+          3
+         </div>
+         <h3 class="text-3xl font-bold mb-5">توسعه و پیاده‌سازی</h3>
+         <p class="text-xl text-gray-300 leading-relaxed">شروع به کدنویسی و ساخت پروژه می‌کنیم و گزارش پیشرفت ارسال می‌کنیم</p>
+        </div>
+        <div class="card text-center">
+         <div class="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center text-6xl font-bold">
+          4
+         </div>
+         <h3 class="text-3xl font-bold mb-5">تست و تحویل</h3>
+         <p class="text-xl text-gray-300 leading-relaxed">پس از تست کامل، پروژه را تحویل داده و آموزش‌های لازم را ارائه می‌دهیم</p>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div>
+    <div id="page-services" class="page">
+     <section class="px-6 py-24">
+      <div class="max-w-7xl mx-auto">
+       <div class="text-center mb-20">
+        <h1 class="text-5xl md:text-7xl font-bold mb-8">خدمات ما</h1>
+        <p class="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">ما تمام خدمات مورد نیاز شما برای حضور قدرتمند در دنیای دیجیتال را ارائه می‌دهیم</p>
+       </div>
+       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-24">
+        <div class="card">
+         <div class="service-icon">
+          🌐
+         </div>
+         <h3 class="text-3xl font-bold mb-5">طراحی وب سایت</h3>
+         <p class="text-gray-300 mb-6 text-lg leading-relaxed">طراحی و توسعه وب سایت‌های حرفه‌ای، مدرن و ریسپانسیو با جدیدترین تکنولوژی‌ها</p>
+         <ul class="feature-list text-base text-gray-400">
+          <li>طراحی مدرن و زیبا</li>
+          <li>ریسپانسیو و موبایل فرندلی</li>
+          <li>بهینه‌سازی SEO</li>
+          <li>سرعت بالای لود</li>
+          <li>پنل مدیریت کاربری</li>
+         </ul>
+        </div>
+        <div class="card">
+         <div class="service-icon">
+          🛒
+         </div>
+         <h3 class="text-3xl font-bold mb-5">فروشگاه آنلاین</h3>
+         <p class="text-gray-300 mb-6 text-lg leading-relaxed">راه‌اندازی فروشگاه اینترنتی حرفه‌ای با امکانات کامل برای کسب و کار شما</p>
+         <ul class="feature-list text-base text-gray-400">
+          <li>درگاه پرداخت آنلاین</li>
+          <li>مدیریت محصولات</li>
+          <li>سیستم سفارش‌گیری</li>
+          <li>پنل مدیریت فروش</li>
+          <li>ارسال پیامک و ایمیل</li>
+         </ul>
+        </div>
+        <div class="card">
+         <div class="service-icon">
+          📱
+         </div>
+         <h3 class="text-3xl font-bold mb-5">اپلیکیشن موبایل</h3>
+         <p class="text-gray-300 mb-6 text-lg leading-relaxed">توسعه اپلیکیشن‌های موبایل برای اندروید و iOS با عملکرد عالی</p>
+         <ul class="feature-list text-base text-gray-400">
+          <li>طراحی UI/UX حرفه‌ای</li>
+          <li>اندروید و iOS</li>
+          <li>عملکرد بهینه</li>
+          <li>نوتیفیکیشن پوش</li>
+          <li>بروزرسانی مداوم</li>
+         </ul>
+        </div>
+        <div class="card">
+         <div class="service-icon">
+          🎨
+         </div>
+         <h3 class="text-3xl font-bold mb-5">طراحی گرافیک</h3>
+         <p class="text-gray-300 mb-6 text-lg leading-relaxed">طراحی لوگو، بنر، پوستر و تمام نیازهای گرافیکی برند شما</p>
+         <ul class="feature-list text-base text-gray-400">
+          <li>طراحی لوگو و هویت برند</li>
+          <li>بنر و پوستر تبلیغاتی</li>
+          <li>موشن گرافیک</li>
+          <li>طراحی رابط کاربری</li>
+          <li>ویرایش عکس و ویدئو</li>
+         </ul>
+        </div>
+        <div class="card">
+         <div class="service-icon">
+          🔍
+         </div>
+         <h3 class="text-3xl font-bold mb-5">سئو و دیجیتال مارکتینگ</h3>
+         <p class="text-gray-300 mb-6 text-lg leading-relaxed">بهینه‌سازی و بازاریابی آنلاین برای افزایش بازدید و فروش شما</p>
+         <ul class="feature-list text-base text-gray-400">
+          <li>سئو و بهینه‌سازی</li>
+          <li>تبلیغات گوگل</li>
+          <li>مدیریت شبکه‌های اجتماعی</li>
+          <li>تولید محتوا</li>
+          <li>تحلیل و گزارش‌دهی</li>
+         </ul>
+        </div>
+        <div class="card">
+         <div class="service-icon">
+          🛠️
+         </div>
+         <h3 class="text-3xl font-bold mb-5">پشتیبانی و نگهداری</h3>
+         <p class="text-gray-300 mb-6 text-lg leading-relaxed">پشتیبانی دائمی و نگهداری وب سایت و اپلیکیشن‌های شما</p>
+         <ul class="feature-list text-base text-gray-400">
+          <li>پشتیبانی 24/7</li>
+          <li>بروزرسانی منظم</li>
+          <li>رفع باگ و مشکلات</li>
+          <li>بکاپ‌گیری</li>
+          <li>امنیت و حفاظت</li>
+         </ul>
+        </div>
+       </div>
+       <div class="card bg-gradient-to-br from-indigo-900/30 to-purple-900/30 text-center">
+        <h2 class="text-4xl font-bold mb-8">تکنولوژی‌های مورد استفاده</h2>
+        <div class="flex flex-wrap justify-center gap-4 mb-10"><span class="tech-badge">HTML5 &amp; CSS3</span> <span class="tech-badge">JavaScript</span> <span class="tech-badge">React</span> <span class="tech-badge">Vue.js</span> <span class="tech-badge">Node.js</span> <span class="tech-badge">PHP</span> <span class="tech-badge">Laravel</span> <span class="tech-badge">WordPress</span> <span class="tech-badge">Python</span> <span class="tech-badge">Django</span> <span class="tech-badge">MySQL</span> <span class="tech-badge">MongoDB</span> <span class="tech-badge">Firebase</span> <span class="tech-badge">AWS</span> <span class="tech-badge">Docker</span> <span class="tech-badge">Git</span>
+        </div>
+        <p class="text-gray-300 mb-8 text-lg leading-relaxed">ما از جدیدترین و پرکاربردترین تکنولوژی‌های دنیا استفاده می‌کنیم تا بهترین نتیجه را برای شما به ارمغان بیاوریم</p><button onclick="navigateTo('contact')" class="btn-primary text-xl"> مشاوره رایگان بگیرید </button>
+       </div>
+      </div>
+     </section>
+    </div>
+    <div id="page-portfolio" class="page">
+     <section class="px-6 py-24">
+      <div class="max-w-7xl mx-auto">
+       <div class="text-center mb-20">
+        <h1 class="text-5xl md:text-7xl font-bold mb-8">نمونه کارهای ما</h1>
+        <p class="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">مجموعه‌ای از پروژه‌های موفق و متنوع که برای مشتریان خود انجام داده‌ایم</p>
+       </div>
+       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10" id="portfolioGrid">
+       </div>
+      </div>
+     </section>
+    </div>
+    <div id="page-pricing" class="page">
+     <section class="px-6 py-24">
+      <div class="max-w-7xl mx-auto">
+       <div class="text-center mb-20">
+        <h1 class="text-5xl md:text-7xl font-bold mb-8">پکیج‌های قیمتی</h1>
+        <p class="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">بهترین قیمت‌ها را با بالاترین کیفیت برای شما فراهم کرده‌ایم</p>
+       </div>
+       <div class="grid md:grid-cols-3 gap-10 mb-20">
+        <div class="pricing-card">
+         <div class="text-6xl mb-6">
+          🌱
+         </div>
+         <h3 class="text-4xl font-bold mb-4">پکیج پایه</h3>
+         <div class="text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">
+          ۵ میلیون تومان
+         </div>
+         <p class="text-gray-400 mb-8 text-lg">مناسب برای کسب و کارهای کوچک</p>
+         <ul class="feature-list text-base mb-10">
+          <li>طراحی وب سایت ساده</li>
+          <li>تا 5 صفحه</li>
+          <li>ریسپانسیو</li>
+          <li>فرم تماس</li>
+          <li>بهینه‌سازی سئو پایه</li>
+          <li>هاست و دامنه 1 ساله</li>
+          <li>پشتیبانی 3 ماهه</li>
+         </ul><button onclick="navigateTo('contact')" class="btn-secondary w-full">انتخاب پکیج</button>
+        </div>
+        <div class="pricing-card featured">
+         <div class="text-6xl mb-6">
+          🚀
+         </div>
+         <h3 class="text-4xl font-bold mb-4">پکیج حرفه‌ای</h3>
+         <div class="text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-500">
+          ۱۲ میلیون تومان
+         </div>
+         <p class="text-gray-400 mb-8 text-lg">بهترین انتخاب برای اکثر مشتریان</p>
+         <ul class="feature-list text-base mb-10">
+          <li>طراحی وب سایت پیشرفته</li>
+          <li>تا 15 صفحه</li>
+          <li>ریسپانسیو و مدرن</li>
+          <li>پنل مدیریت اختصاصی</li>
+          <li>بهینه‌سازی سئو کامل</li>
+          <li>انیمیشن‌ها و افکت‌ها</li>
+          <li>هاست و دامنه 1 ساله</li>
+          <li>پشتیبانی 6 ماهه</li>
+          <li>آموزش کامل</li>
+         </ul><button onclick="navigateTo('contact')" class="btn-primary w-full">انتخاب پکیج</button>
+        </div>
+        <div class="pricing-card">
+         <div class="text-6xl mb-6">
+          💎
+         </div>
+         <h3 class="text-4xl font-bold mb-4">پکیج سازمانی</h3>
+         <div class="text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-500">
+          ۲۵ میلیون تومان
+         </div>
+         <p class="text-gray-400 mb-8 text-lg">برای کسب و کارهای بزرگ</p>
+         <ul class="feature-list text-base mb-10">
+          <li>طراحی وب سایت یا اپلیکیشن</li>
+          <li>صفحات نامحدود</li>
+          <li>طراحی اختصاصی UI/UX</li>
+          <li>پنل مدیریت پیشرفته</li>
+          <li>سئو و دیجیتال مارکتینگ</li>
+          <li>امکانات سفارشی</li>
+          <li>API و یکپارچه‌سازی</li>
+          <li>هاست و دامنه 2 ساله</li>
+          <li>پشتیبانی 1 ساله</li>
+          <li>آموزش تخصصی</li>
+         </ul><button onclick="navigateTo('contact')" class="btn-secondary w-full">انتخاب پکیج</button>
+        </div>
+       </div>
+       <div class="card bg-gradient-to-br from-indigo-900/30 to-purple-900/30">
+        <h2 class="text-4xl font-bold mb-8 text-center">مقایسه پکیج‌ها</h2>
+        <div class="overflow-x-auto">
+         <table class="comparison-table">
+          <thead>
+           <tr>
+            <th>ویژگی</th>
+            <th>پکیج پایه</th>
+            <th>پکیج حرفه‌ای</th>
+            <th>پکیج سازمانی</th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+            <td class="font-bold">تعداد صفحات</td>
+            <td>تا 5</td>
+            <td>تا 15</td>
+            <td>نامحدود</td>
+           </tr>
+           <tr>
+            <td class="font-bold">طراحی ریسپانسیو</td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
+           </tr>
+           <tr>
+            <td class="font-bold">پنل مدیریت</td>
+            <td><span class="cross-icon">✗</span></td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
+           </tr>
+           <tr>
+            <td class="font-bold">سئو پیشرفته</td>
+            <td><span class="cross-icon">✗</span></td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
+           </tr>
+           <tr>
+            <td class="font-bold">انیمیشن و افکت</td>
+            <td><span class="cross-icon">✗</span></td>
+            <td><span class="check-icon">✓</span></td>
+            <td><span class="check-icon">✓</span></td>
+           </tr>
+           <tr>
+            <td class="font-bold">API یکپارچه‌سازی</td>
+            <td><span class="cross-icon">✗</span></td>
+            <td><span class="cross-icon">✗</span></td>
+            <td><span class="check-icon">✓</span></td>
+           </tr>
+           <tr>
+            <td class="font-bold">مدت پشتیبانی</td>
+            <td>3 ماه</td>
+            <td>6 ماه</td>
+            <td>12 ماه</td>
+           </tr>
+           <tr>
+            <td class="font-bold">آموزش</td>
+            <td>پایه</td>
+            <td>کامل</td>
+            <td>تخصصی</td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+       </div>
+       <div class="mt-16 text-center card bg-gradient-to-br from-purple-900/30 to-pink-900/30">
+        <h3 class="text-3xl font-bold mb-6">نیاز به مشاوره دارید؟</h3>
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed">تیم ما آماده است تا به صورت رایگان با شما مشاوره کند و بهترین پکیج را برای نیازهایتان پیشنهاد دهد</p><button onclick="navigateTo('contact')" class="btn-primary text-xl"> درخواست مشاوره رایگان </button>
+       </div>
+      </div>
+     </section>
+    </div>
+    <div id="page-testimonials" class="page">
+     <section class="px-6 py-24">
+      <div class="max-w-7xl mx-auto">
+       <div class="text-center mb-20">
+        <h1 class="text-5xl md:text-7xl font-bold mb-8">نظرات مشتریان</h1>
+        <p class="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">رضایت مشتریان ما بزرگترین افتخار ماست</p>
+       </div>
+       <div class="grid md:grid-cols-2 gap-10 mb-16">
+        <div class="testimonial-card">
+         <div class="flex items-center gap-4 mb-6">
+          <div class="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center text-4xl font-bold">
+           ع
+          </div>
+          <div>
+           <h4 class="text-2xl font-bold">علی احمدی</h4>
+           <p class="text-gray-400">صاحب فروشگاه پوشاک</p>
+          </div>
+         </div>
+         <div class="text-yellow-400 text-3xl mb-4">
+          ★★★★★
+         </div>
+         <p class="text-gray-300 text-lg leading-relaxed">واقعا از کار آقای نصرت زهی راضی هستم. فروشگاه اینترنتی من خیلی حرفه‌ای و زیبا شد. فروش آنلاین من بعد از راه‌اندازی سایت ۳ برابر شده. پشتیبانی عالی و همیشه پاسخگو هستند.</p>
+        </div>
+        <div class="testimonial-card">
+         <div class="flex items-center gap-4 mb-6">
+          <div class="w-20 h-20 bg-gradient-to-br from-pink-500 to-red-500 rounded-full flex items-center justify-center text-4xl font-bold">
+           م
+          </div>
+          <div>
+           <h4 class="text-2xl font-bold">محمد رضایی</h4>
+           <p class="text-gray-400">مدیر رستوران</p>
+          </div>
+         </div>
+         <div class="text-yellow-400 text-3xl mb-4">
+          ★★★★★
+         </div>
+         <p class="text-gray-300 text-lg leading-relaxed">سایت رستوران ما خیلی زیبا و کاربرپسند طراحی شده. مشتریان راحت می‌تونن منو رو ببینن و سفارش بدن. تعداد سفارش‌های آنلاین ما خیلی زیاد شده. ممنون از تیم حرفه‌ای شما.</p>
+        </div>
+        <div class="testimonial-card">
+         <div class="flex items-center gap-4 mb-6">
+          <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center text-4xl font-bold">
+           ف
+          </div>
+          <div>
+           <h4 class="text-2xl font-bold">فاطمه حسینی</h4>
+           <p class="text-gray-400">مدیر تالار عروسی</p>
+          </div>
+         </div>
+         <div class="text-yellow-400 text-3xl mb-4">
+          ★★★★★
+         </div>
+         <p class="text-gray-300 text-lg leading-relaxed">وب سایت تالار ما عالی شده. گالری تصاویر خیلی زیباست و سیستم رزرو آنلاین کار خیلی ما رو راحت کرده. دیگه نیازی نیست مشتریان حضوری بیان. قیمت هم خیلی مناسب بود.</p>
+        </div>
+        <div class="testimonial-card">
+         <div class="flex items-center gap-4 mb-6">
+          <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center text-4xl font-bold">
+           ح
+          </div>
+          <div>
+           <h4 class="text-2xl font-bold">حسین کریمی</h4>
+           <p class="text-gray-400">مدیر مدرسه</p>
+          </div>
+         </div>
+         <div class="text-yellow-400 text-3xl mb-4">
+          ★★★★★
+         </div>
+         <p class="text-gray-300 text-lg leading-relaxed">سیستم مدیریت مدرسه که برای ما طراحی کردن واقعا کاربردی و حرفه‌ای است. ثبت نمرات و حضور غیاب خیلی راحت شده. اولیا هم از طریق پنل خودشون می‌تونن نمرات بچه‌هاشون رو ببینن.</p>
+        </div>
+        <div class="testimonial-card">
+         <div class="flex items-center gap-4 mb-6">
+          <div class="w-20 h-20 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center text-4xl font-bold">
+           ز
+          </div>
+          <div>
+           <h4 class="text-2xl font-bold">زهرا محمدی</h4>
+           <p class="text-gray-400">مدیر کلینیک</p>
+          </div>
+         </div>
+         <div class="text-yellow-400 text-3xl mb-4">
+          ★★★★★
+         </div>
+         <p class="text-gray-300 text-lg leading-relaxed">سایت کلینیک ما با سیستم نوبت‌دهی آنلاین خیلی کارآمد شده. بیماران راحت نوبت میگیرن و دیگه صف نمی‌بندیم. طراحی سایت هم خیلی مدرن و زیبا شده. تشکر از امیر عزیز.</p>
+        </div>
+        <div class="testimonial-card">
+         <div class="flex items-center gap-4 mb-6">
+          <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-4xl font-bold">
+           ر
+          </div>
+          <div>
+           <h4 class="text-2xl font-bold">رضا نوری</h4>
+           <p class="text-gray-400">صاحب استارتاپ</p>
+          </div>
+         </div>
+         <div class="text-yellow-400 text-3xl mb-4">
+          ★★★★★
+         </div>
+         <p class="text-gray-300 text-lg leading-relaxed">اپلیکیشن موبایلی که برای استارتاپ ما ساختن واقعا فوق‌العاده است. کاربران ما خیلی راضی هستن و نرخ نصب بالایی داریم. کدنویسی تمیز و عملکرد سریع. قطعا برای پروژه بعدی هم با شما همکاری می‌کنیم.</p>
+        </div>
+       </div>
+       <div class="card bg-gradient-to-br from-indigo-900/30 to-purple-900/30 text-center">
+        <div class="stats-number mb-5" style="font-size: 5rem;">
+         98%
+        </div>
+        <h3 class="text-4xl font-bold mb-4">رضایت مشتریان</h3>
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed">بیش از 98 درصد مشتریان ما از خدمات ما راضی هستند و ما را به دیگران پیشنهاد می‌کنند</p><button onclick="navigateTo('contact')" class="btn-primary text-xl"> شما هم تجربه کنید </button>
+       </div>
+      </div>
+     </section>
+    </div>
+    <div id="page-about" class="page">
+     <section class="px-6 py-24">
+      <div class="max-w-7xl mx-auto">
+       <div class="text-center mb-20">
+        <h1 class="text-5xl md:text-7xl font-bold mb-8">درباره ما</h1>
+        <p class="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">داستان ما، ماموریت ما و تیم حرفه‌ای ما را بیشتر بشناسید</p>
+       </div>
+       <div class="grid md:grid-cols-2 gap-12 mb-20">
+        <div class="card">
+         <div class="text-8xl mb-6">
+          👨‍💻
+         </div>
+         <h2 class="text-4xl font-bold mb-6">امیر نصرت زهی</h2>
+         <p class="text-xl text-gray-300 leading-relaxed mb-6">من امیر نصرت زهی هستم، برنامه‌نویس و طراح وب با بیش از 5 سال تجربه در زمینه توسعه وب و اپلیکیشن. از سال 1397 به صورت حرفه‌ای در زمینه طراحی و توسعه نرم‌افزار فعالیت می‌کنم.</p>
+         <p class="text-xl text-gray-300 leading-relaxed mb-6">هدف من کمک به کسب و کارهای محلی در سراوان و سیستان و بلوچستان برای ورود به دنیای دیجیتال و رشد آنلاین است. تاکنون بیش از 150 پروژه موفق را تحویل داده‌ام.</p>
+         <div class="flex flex-wrap gap-3"><span class="tech-badge">Full Stack Developer</span> <span class="tech-badge">UI/UX Designer</span> <span class="tech-badge">SEO Specialist</span>
+         </div>
+        </div>
+        <div class="card bg-gradient-to-br from-indigo-900/30 to-purple-900/30">
+         <h3 class="text-3xl font-bold mb-8">مهارت‌های تخصصی</h3>
+         <div class="space-y-6">
+          <div>
+           <div class="flex justify-between mb-2"><span class="text-lg font-bold">HTML &amp; CSS &amp; JavaScript</span> <span class="text-lg">95%</span>
+           </div>
+           <div class="w-full bg-gray-700 rounded-full h-3">
+            <div class="bg-gradient-to-r from-indigo-500 to-purple-500 h-3 rounded-full" style="width: 95%"></div>
+           </div>
+          </div>
+          <div>
+           <div class="flex justify-between mb-2"><span class="text-lg font-bold">React &amp; Vue.js</span> <span class="text-lg">90%</span>
+           </div>
+           <div class="w-full bg-gray-700 rounded-full h-3">
+            <div class="bg-gradient-to-r from-indigo-500 to-purple-500 h-3 rounded-full" style="width: 90%"></div>
+           </div>
+          </div>
+          <div>
+           <div class="flex justify-between mb-2"><span class="text-lg font-bold">PHP &amp; Laravel</span> <span class="text-lg">88%</span>
+           </div>
+           <div class="w-full bg-gray-700 rounded-full h-3">
+            <div class="bg-gradient-to-r from-indigo-500 to-purple-500 h-3 rounded-full" style="width: 88%"></div>
+           </div>
+          </div>
+          <div>
+           <div class="flex justify-between mb-2"><span class="text-lg font-bold">Python &amp; Django</span> <span class="text-lg">85%</span>
+           </div>
+           <div class="w-full bg-gray-700 rounded-full h-3">
+            <div class="bg-gradient-to-r from-indigo-500 to-purple-500 h-3 rounded-full" style="width: 85%"></div>
+           </div>
+          </div>
+          <div>
+           <div class="flex justify-between mb-2"><span class="text-lg font-bold">UI/UX Design</span> <span class="text-lg">92%</span>
+           </div>
+           <div class="w-full bg-gray-700 rounded-full h-3">
+            <div class="bg-gradient-to-r from-indigo-500 to-purple-500 h-3 rounded-full" style="width: 92%"></div>
+           </div>
+          </div>
+          <div>
+           <div class="flex justify-between mb-2"><span class="text-lg font-bold">SEO &amp; Digital Marketing</span> <span class="text-lg">87%</span>
+           </div>
+           <div class="w-full bg-gray-700 rounded-full h-3">
+            <div class="bg-gradient-to-r from-indigo-500 to-purple-500 h-3 rounded-full" style="width: 87%"></div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="grid md:grid-cols-3 gap-10 mb-20">
+        <div class="card text-center bg-gradient-to-br from-blue-900/30 to-indigo-900/30">
+         <div class="text-7xl mb-5">
+          🎯
+         </div>
+         <h3 class="text-3xl font-bold mb-5">ماموریت ما</h3>
+         <p class="text-lg text-gray-300 leading-relaxed">کمک به کسب و کارهای محلی برای رشد در فضای دیجیتال و ارائه خدمات با کیفیت جهانی در سطح منطقه</p>
+        </div>
+        <div class="card text-center bg-gradient-to-br from-purple-900/30 to-pink-900/30">
+         <div class="text-7xl mb-5">
+          👁️
+         </div>
+         <h3 class="text-3xl font-bold mb-5">چشم‌انداز ما</h3>
+         <p class="text-lg text-gray-300 leading-relaxed">تبدیل شدن به بزرگترین ارائه‌دهنده خدمات دیجیتال در سیستان و بلوچستان و توانمندسازی کسب و کارها</p>
+        </div>
+        <div class="card text-center bg-gradient-to-br from-green-900/30 to-teal-900/30">
+         <div class="text-7xl mb-5">
+          💎
+         </div>
+         <h3 class="text-3xl font-bold mb-5">ارزش‌های ما</h3>
+         <p class="text-lg text-gray-300 leading-relaxed">کیفیت، صداقت، تعهد به مشتری، نوآوری مداوم و رشد همراه با جامعه از ارزش‌های اصلی ما هستند</p>
+        </div>
+       </div>
+       <div class="card text-center bg-gradient-to-br from-indigo-900/30 to-purple-900/30">
+        <h2 class="text-4xl font-bold mb-6">چرا با ما کار کنید؟</h2>
+        <div class="grid md:grid-cols-2 gap-8 text-right">
+         <div>
+          <div class="flex items-start gap-4 mb-6">
+           <div class="text-5xl">
+            ✅
+           </div>
+           <div>
+            <h4 class="text-2xl font-bold mb-2">تجربه گسترده</h4>
+            <p class="text-gray-300 text-lg leading-relaxed">بیش از 5 سال تجربه حرفه‌ای و 150+ پروژه موفق</p>
+           </div>
+          </div>
+          <div class="flex items-start gap-4 mb-6">
+           <div class="text-5xl">
+            ✅
+           </div>
+           <div>
+            <h4 class="text-2xl font-bold mb-2">کیفیت بالا</h4>
+            <p class="text-gray-300 text-lg leading-relaxed">استفاده از جدیدترین تکنولوژی‌ها و بهترین شیوه‌های کدنویسی</p>
+           </div>
+          </div>
+          <div class="flex items-start gap-4">
+           <div class="text-5xl">
+            ✅
+           </div>
+           <div>
+            <h4 class="text-2xl font-bold mb-2">قیمت مناسب</h4>
+            <p class="text-gray-300 text-lg leading-relaxed">بهترین قیمت در بازار با امکان پرداخت اقساطی</p>
+           </div>
+          </div>
+         </div>
+         <div>
+          <div class="flex items-start gap-4 mb-6">
+           <div class="text-5xl">
+            ✅
+           </div>
+           <div>
+            <h4 class="text-2xl font-bold mb-2">پشتیبانی دائمی</h4>
+            <p class="text-gray-300 text-lg leading-relaxed">پشتیبانی 24/7 و رفع مشکلات در سریع‌ترین زمان</p>
+           </div>
+          </div>
+          <div class="flex items-start gap-4 mb-6">
+           <div class="text-5xl">
+            ✅
+           </div>
+           <div>
+            <h4 class="text-2xl font-bold mb-2">تحویل به موقع</h4>
+            <p class="text-gray-300 text-lg leading-relaxed">تعهد به زمان تحویل و گزارش پیشرفت مستمر</p>
+           </div>
+          </div>
+          <div class="flex items-start gap-4">
+           <div class="text-5xl">
+            ✅
+           </div>
+           <div>
+            <h4 class="text-2xl font-bold mb-2">مشتری محوری</h4>
+            <p class="text-gray-300 text-lg leading-relaxed">رضایت شما اولویت اول ماست و تا رضایت کامل با شما هستیم</p>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div>
+    <div id="page-contact" class="page">
+     <section class="px-6 py-24">
+      <div class="max-w-7xl mx-auto">
+       <div class="text-center mb-20">
+        <h1 class="text-5xl md:text-7xl font-bold mb-8">تماس با ما</h1>
+        <p class="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">برای سفارش پروژه، مشاوره رایگان یا هر سوالی با ما در ارتباط باشید</p>
+       </div>
+       <div class="grid md:grid-cols-2 gap-12 mb-20">
+        <div>
+         <div class="card mb-8">
+          <h2 class="text-3xl font-bold mb-8">فرم تماس سریع</h2>
+          <form id="contactForm" onsubmit="handleContactSubmit(event)">
+           <div class="form-group"><label for="contact-name">نام و نام خانوادگی</label> <input type="text" id="contact-name" placeholder="نام خود را وارد کنید" required>
+           </div>
+           <div class="form-group"><label for="contact-phone">شماره تماس</label> <input type="tel" id="contact-phone" placeholder="09xxxxxxxxx" required pattern="[0-9]{11}">
+           </div>
+           <div class="form-group"><label for="contact-email">ایمیل (اختیاری)</label> <input type="email" id="contact-email" placeholder="email@example.com">
+           </div>
+           <div class="form-group"><label for="contact-service">نوع خدمت</label> <select id="contact-service" required> <option value="">انتخاب کنید...</option> <option value="وب سایت">طراحی وب سایت</option> <option value="فروشگاه">فروشگاه آنلاین</option> <option value="اپلیکیشن">اپلیکیشن موبایل</option> <option value="گرافیک">طراحی گرافیک</option> <option value="سئو">سئو و دیجیتال مارکتینگ</option> <option value="پشتیبانی">پشتیبانی و نگهداری</option> <option value="مشاوره">مشاوره</option> <option value="سایر">سایر</option> </select>
+           </div>
+           <div class="form-group"><label for="contact-message">توضیحات پروژه</label> <textarea id="contact-message" rows="5" placeholder="لطفا جزئیات پروژه خود را توضیح دهید..." required></textarea>
+           </div><button type="submit" class="btn-primary w-full" id="contactSubmitBtn"> ارسال درخواست </button>
+          </form>
+         </div>
+        </div>
+        <div>
+         <div class="contact-info-card mb-8">
+          <div class="contact-icon">
+           📞
+          </div>
+          <h3 class="text-3xl font-bold mb-4">تماس تلفنی</h3><a href="tel:09157241675" class="text-2xl text-indigo-400 hover:text-indigo-300 transition-colors block mb-2" dir="ltr"> 0915 724 1675 </a>
+          <p class="text-gray-400 text-lg">پاسخگویی از ساعت 9 صبح تا 9 شب</p>
+         </div>
+         <div class="contact-info-card mb-8">
+          <div class="contact-icon">
+           💬
+          </div>
+          <h3 class="text-3xl font-bold mb-4">واتساپ و تلگرام</h3><a href="https://wa.me/989157241675" target="_blank" rel="noopener noreferrer" class="text-2xl text-green-400 hover:text-green-300 transition-colors block mb-2" dir="ltr"> 0915 724 1675 </a>
+          <p class="text-gray-400 text-lg">پشتیبانی سریع و آنلاین</p>
+         </div>
+         <div class="contact-info-card mb-8">
+          <div class="contact-icon">
+           📧
+          </div>
+          <h3 class="text-3xl font-bold mb-4">ایمیل</h3><a href="mailto:amir.640.3515@gmail.com" class="text-2xl text-purple-400 hover:text-purple-300 transition-colors block mb-2"> amir.640.3515@gmail.com </a>
+          <p class="text-gray-400 text-lg">پاسخ در کمتر از 24 ساعت</p>
+         </div>
+         <div class="contact-info-card">
+          <div class="contact-icon">
+           🌐
+          </div>
+          <h3 class="text-3xl font-bold mb-4">شبکه‌های اجتماعی</h3>
+          <div class="flex gap-4 justify-center"><a href="https://instagram.com/amir.1.4.4.6" target="_blank" rel="noopener noreferrer" class="w-16 h-16 bg-gradient-to-br from-pink-500 to-red-500 rounded-full flex items-center justify-center text-3xl hover:scale-110 transition-transform"> 📷 </a> <a href="https://t.me/+989157241675" target="_blank" rel="noopener noreferrer" class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-3xl hover:scale-110 transition-transform"> ✈️ </a> <a href="https://wa.me/989157241675" target="_blank" rel="noopener noreferrer" class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-3xl hover:scale-110 transition-transform"> 💬 </a>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="map-card">
+        <div class="map-icon-large">
+         📍
+        </div>
+        <h2 class="text-4xl font-bold mb-6">آدرس دفتر</h2>
+        <p class="text-2xl text-gray-300 mb-10 leading-relaxed">ایران، سیستان و بلوچستان، سراوان</p>
+        <div class="grid md:grid-cols-3 gap-6">
+         <div class="location-detail-card">
+          <div class="text-6xl mb-4">
+           🏢
+          </div>
+          <h4 class="text-xl font-bold mb-2">استان</h4>
+          <p class="text-gray-300 text-lg">سیستان و بلوچستان</p>
+         </div>
+         <div class="location-detail-card">
+          <div class="text-6xl mb-4">
+           🌆
+          </div>
+          <h4 class="text-xl font-bold mb-2">شهر</h4>
+          <p class="text-gray-300 text-lg">سراوان</p>
+         </div>
+         <div class="location-detail-card">
+          <div class="text-6xl mb-4">
+           ⏰
+          </div>
+          <h4 class="text-xl font-bold mb-2">ساعت کاری</h4>
+          <p class="text-gray-300 text-lg">9 صبح - 9 شب</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div>
+    <div id="page-dashboard" class="page">
+     <section class="px-6 py-24">
+      <div class="max-w-7xl mx-auto">
+       <div class="flex justify-between items-center mb-12">
+        <div>
+         <h1 class="text-5xl md:text-6xl font-bold mb-4">داشبورد مدیریت</h1>
+         <p class="text-xl text-gray-300">مدیریت درخواست‌های مشتریان</p>
+        </div>
+        <div class="flex gap-4"><button onclick="refreshDashboard()" class="btn-success" id="refreshBtn"> 🔄 بروزرسانی </button> <button onclick="navigateTo('home')" class="btn-secondary"> 🏠 بازگشت به سایت </button>
+        </div>
+       </div>
+       <div class="grid md:grid-cols-4 gap-8 mb-12">
+        <div class="card text-center">
+         <div class="text-6xl mb-4">
+          📝
+         </div>
+         <div class="text-4xl font-bold mb-2" id="totalCount">
+          0
+         </div>
+         <p class="text-gray-400 text-lg">کل درخواست‌ها</p>
+        </div>
+        <div class="card text-center">
+         <div class="text-6xl mb-4">
+          📅
+         </div>
+         <div class="text-4xl font-bold mb-2" id="todayCount">
+          0
+         </div>
+         <p class="text-gray-400 text-lg">درخواست امروز</p>
+        </div>
+        <div class="card text-center">
+         <div class="text-6xl mb-4">
+          📊
+         </div>
+         <div class="text-4xl font-bold mb-2" id="weekCount">
+          0
+         </div>
+         <p class="text-gray-400 text-lg">هفته اخیر</p>
+        </div>
+        <div class="card text-center">
+         <div class="text-6xl mb-4">
+          💼
+         </div>
+         <div class="text-4xl font-bold mb-2" id="monthCount">
+          0
+         </div>
+         <p class="text-gray-400 text-lg">ماه اخیر</p>
+        </div>
+       </div>
+       <div class="card">
+        <div class="flex justify-between items-center mb-8">
+         <h2 class="text-3xl font-bold">لیست درخواست‌ها</h2>
+         <div class="flex gap-4"><select id="serviceFilter" class="px-4 py-2 bg-surface-light rounded-lg" style="width: auto;" onchange="filterRequests()"> <option value="">همه خدمات</option> <option value="وب سایت">طراحی وب سایت</option> <option value="فروشگاه">فروشگاه آنلاین</option> <option value="اپلیکیشن">اپلیکیشن موبایل</option> <option value="گرافیک">طراحی گرافیک</option> <option value="سئو">سئو و دیجیتال مارکتینگ</option> <option value="پشتیبانی">پشتیبانی و نگهداری</option> <option value="مشاوره">مشاوره</option> <option value="سایر">سایر</option> </select>
+         </div>
+        </div>
+        <div id="requestsTableContainer">
+         <div class="empty-state">
+          <div class="empty-state-icon">
+           📭
+          </div>
+          <h3 class="text-2xl font-bold mb-4">هنوز درخواستی ثبت نشده</h3>
+          <p class="text-gray-400 text-lg">درخواست‌های ثبت شده از فرم تماس در اینجا نمایش داده می‌شوند</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </section>
+    </div>
+   </main>
+   <footer class="bg-gradient-to-b from-transparent to-indigo-900/30 px-6 py-20 mt-32">
+    <div class="max-w-7xl mx-auto">
+     <div class="grid md:grid-cols-4 gap-12 mb-16">
+      <div>
+       <div class="flex items-center gap-4 mb-6"><img src="https://i.imgur.com/lKEPjy8.jpeg" alt="لوگو" class="logo-img" onerror="this.style.display='none';">
+        <h3 class="text-2xl font-bold">امیر نصرت زهی</h3>
+       </div>
+       <p class="text-gray-400 text-lg leading-relaxed mb-6">ارائه‌دهنده خدمات حرفه‌ای توسعه وب، طراحی سایت و اپلیکیشن در سراوان و سیستان و بلوچستان</p>
+       <div class="flex gap-4"><a href="https://instagram.com/amir.1.4.4.6" target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-gradient-to-br from-pink-500 to-red-500 rounded-full flex items-center justify-center text-2xl hover:scale-110 transition-transform"> 📷 </a> <a href="https://t.me/+989157241675" target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center text-2xl hover:scale-110 transition-transform"> ✈️ </a> <a href="https://wa.me/989157241675" target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-2xl hover:scale-110 transition-transform"> 💬 </a>
+       </div>
+      </div>
+      <div>
+       <h4 class="text-2xl font-bold mb-6">دسترسی سریع</h4>
+       <ul class="space-y-3">
+        <li><button onclick="navigateTo('home')" class="text-gray-400 hover:text-indigo-400 transition-colors text-lg">صفحه اصلی</button></li>
+        <li><button onclick="navigateTo('services')" class="text-gray-400 hover:text-indigo-400 transition-colors text-lg">خدمات ما</button></li>
+        <li><button onclick="navigateTo('portfolio')" class="text-gray-400 hover:text-indigo-400 transition-colors text-lg">نمونه کارها</button></li>
+        <li><button onclick="navigateTo('pricing')" class="text-gray-400 hover:text-indigo-400 transition-colors text-lg">قیمت‌ها</button></li>
+        <li><button onclick="navigateTo('about')" class="text-gray-400 hover:text-indigo-400 transition-colors text-lg">درباره ما</button></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="text-2xl font-bold mb-6">خدمات</h4>
+       <ul class="space-y-3">
+        <li><span class="text-gray-400 text-lg">طراحی وب سایت</span></li>
+        <li><span class="text-gray-400 text-lg">فروشگاه آنلاین</span></li>
+        <li><span class="text-gray-400 text-lg">اپلیکیشن موبایل</span></li>
+        <li><span class="text-gray-400 text-lg">طراحی گرافیک</span></li>
+        <li><span class="text-gray-400 text-lg">سئو و مارکتینگ</span></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="text-2xl font-bold mb-6">تماس با ما</h4>
+       <ul class="space-y-4">
+        <li class="flex items-center gap-3"><span class="text-3xl">📞</span> <a href="tel:09157241675" class="text-gray-400 hover:text-indigo-400 transition-colors text-lg" dir="ltr">0915 724 1675</a></li>
+        <li class="flex items-center gap-3"><span class="text-3xl">📧</span> <a href="mailto:amir.640.3515@gmail.com" class="text-gray-400 hover:text-indigo-400 transition-colors text-lg">amir.640.3515@gmail.com</a></li>
+        <li class="flex items-start gap-3"><span class="text-3xl">📍</span> <span class="text-gray-400 text-lg">سیستان و بلوچستان، سراوان</span></li>
+       </ul>
+      </div>
+     </div>
+     <div class="border-t border-gray-700 pt-10 text-center">
+      <p class="text-gray-400 text-lg">تمام حقوق محفوظ است امیر نصرت زهی 2025 | ساخته شده با ❤️ توسط امیر نصرت زهی</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+        let allRequests = [];
+        let logoClickCount = 0;
+        let logoClickTimer = null;
+        
+        const portfolioData = [
+            {
+                id: 1,
+                icon: '🏪',
+                gradient: 'from-blue-600 to-purple-600',
+                title: 'فروشگاه آنلاین پوشاک',
+                client: 'فروشگاه مد و پوشاک آرمان',
+                duration: '3 ماه',
+                year: '1402',
+                description: 'طراحی و توسعه یک فروشگاه اینترنتی کامل با امکانات پیشرفته برای فروش آنلاین انواع پوشاک. این پروژه شامل طراحی رابط کاربری مدرن، پنل مدیریت قدرتمند، سیستم پرداخت امن و یکپارچه‌سازی با انبار و حسابداری بود.',
+                features: [
+                    'درگاه پرداخت بانکی امن و چند منظوره',
+                    'پنل مدیریت محصولات با آپلود تصاویر متعدد',
+                    'سیستم سبد خرید و مدیریت سفارشات',
+                    'فیلتر و جستجوی پیشرفته محصولات',
+                    'سیستم ارسال پیامک و ایمیل خودکار',
+                    'مدیریت موجودی انبار به صورت Real-time',
+                    'سیستم تخفیف و کوپن تبلیغاتی',
+                    'طراحی کاملا ریسپانسیو برای موبایل'
+                ],
+                tech: ['WordPress', 'WooCommerce', 'PHP', 'MySQL', 'JavaScript'],
+                results: [
+                    'افزایش 250% فروش آنلاین',
+                    'کاهش 60% هزینه‌های عملیاتی',
+                    'بیش از 5000 مشتری ثبت‌نام شده',
+                    'میانگین رضایت مشتریان 4.8 از 5'
+                ]
+            },
+            {
+                id: 2,
+                icon: '🍔',
+                gradient: 'from-green-600 to-teal-600',
+                title: 'سایت رستوران و کافه',
+                client: 'رستوران سنتی گلستان',
+                duration: '2 ماه',
+                year: '1402',
+                description: 'ساخت وب سایت زیبا و کاربردی برای رستوران با قابلیت سفارش آنلاین غذا. این پروژه شامل طراحی منوی دیجیتال، سیستم رزرو میز، نمایش گالری تصاویر غذاها و یکپارچه‌سازی با سیستم آشپزخانه بود.',
+                features: [
+                    'منوی دیجیتال با تصاویر حرفه‌ای غذاها',
+                    'سیستم سفارش آنلاین با انتخاب زمان تحویل',
+                    'رزرو آنلاین میز با انتخاب تاریخ و ساعت',
+                    'نمایش موقعیت رستوران روی نقشه',
+                    'سیستم امتیازدهی و نظرات مشتریان',
+                    'پنل مدیریت سفارشات برای آشپزخانه',
+                    'ارسال اعلان به مشتری برای وضعیت سفارش',
+                    'گالری تصاویر رستوران و فضای داخلی'
+                ],
+                tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.io'],
+                results: [
+                    'افزایش 180% سفارشات آنلاین',
+                    '3500+ سفارش موفق در 6 ماه',
+                    'کاهش 40% خطاهای سفارش‌گیری',
+                    'افزایش 90% رضایت مشتریان'
+                ]
+            },
+            {
+                id: 3,
+                icon: '💍',
+                gradient: 'from-pink-600 to-red-600',
+                title: 'وب سایت تالار عروسی',
+                client: 'تالار پذیرایی قصر طلایی',
+                duration: '2.5 ماه',
+                year: '1401',
+                description: 'طراحی وب سایت لوکس و زیبا برای تالار عروسی با امکان رزرو آنلاین، نمایش خدمات، گالری تصاویر و ویدیوهای مراسم‌های قبلی. سیستم رزرو هوشمند با تقویم آنلاین و مدیریت پیش‌پرداخت.',
+                features: [
+                    'گالری تصاویر و ویدیوهای حرفه‌ای مراسم',
+                    'تقویم رزرو آنلاین با نمایش تاریخ‌های خالی',
+                    'معرفی کامل خدمات و امکانات تالار',
+                    'سیستم پیش‌پرداخت و قرارداد آنلاین',
+                    'نمایش پکیج‌های مختلف با قیمت',
+                    'فرم درخواست بازدید حضوری',
+                    'نمایش نظرات و امتیازات مشتریان',
+                    'تور مجازی 360 درجه از فضای تالار'
+                ],
+                tech: ['Vue.js', 'Laravel', 'MySQL', 'Tailwind CSS', 'Three.js'],
+                results: [
+                    'افزایش 200% رزروهای آنلاین',
+                    'کاهش 70% تماس‌های تلفنی',
+                    'رزرو کامل 85% روزهای سال',
+                    'افزایش 120% آگاهی از برند'
+                ]
+            },
+            {
+                id: 4,
+                icon: '🏫',
+                gradient: 'from-yellow-600 to-orange-600',
+                title: 'سیستم مدیریت مدرسه',
+                client: 'دبیرستان پسرانه فرزانگان',
+                duration: '4 ماه',
+                year: '1401',
+                description: 'توسعه یک سیستم جامع مدیریت مدرسه شامل ثبت‌نام دانش‌آموزان، مدیریت نمرات، حضور و غیاب، مالی، کتابخانه و ارتباط با اولیا. این سیستم با پنل‌های مجزا برای مدیر، معلم، دانش‌آموز و اولیا طراحی شد.',
+                features: [
+                    'ثبت‌نام و پذیرش دانش‌آموزان آنلاین',
+                    'سیستم مدیریت نمرات و کارنامه دیجیتال',
+                    'ثبت حضور و غیاب با QR Code',
+                    'مدیریت مالی شامل شهریه و اقساط',
+                    'سیستم کتابخانه و امانت کتاب',
+                    'پیام‌رسان داخلی بین معلم و اولیا',
+                    'گزارش‌گیری پیشرفته تحصیلی',
+                    'برنامه کلاسی و امتحانات'
+                ],
+                tech: ['PHP', 'Laravel', 'MySQL', 'Bootstrap', 'Chart.js'],
+                results: [
+                    'کاهش 90% کاغذبازی اداری',
+                    'افزایش 150% سرعت کارها',
+                    'رضایت 95% اولیا از سیستم',
+                    'صرفه‌جویی 80% هزینه‌های اداری'
+                ]
+            },
+            {
+                id: 5,
+                icon: '🏥',
+                gradient: 'from-indigo-600 to-blue-600',
+                title: 'سایت کلینیک و درمانگاه',
+                client: 'کلینیک تخصصی سلامت',
+                duration: '2 ماه',
+                year: '1403',
+                description: 'طراحی سایت پزشکی با سیستم نوبت‌دهی آنلاین، معرفی پزشکان و خدمات، مشاوره آنلاین و پرونده الکترونیک بیمار. این سیستم با استانداردهای پزشکی و حفظ حریم خصوصی طراحی شده است.',
+                features: [
+                    'سیستم نوبت‌دهی آنلاین با انتخاب پزشک',
+                    'پرونده الکترونیک سلامت بیماران',
+                    'معرفی کامل پزشکان و تخصص‌ها',
+                    'سیستم مشاوره آنلاین ویدیویی',
+                    'یادآوری نوبت با پیامک و ایمیل',
+                    'ارسال نتایج آزمایش به صورت آنلاین',
+                    'سیستم پرداخت ویزیت آنلاین',
+                    'امکان لغو و تغییر نوبت'
+                ],
+                tech: ['Django', 'Python', 'PostgreSQL', 'WebRTC', 'Redis'],
+                results: [
+                    'کاهش 85% صف انتظار',
+                    'افزایش 300% نوبت‌های روزانه',
+                    '2000+ بیمار ثبت‌نام شده',
+                    'رضایت 92% بیماران از سیستم'
+                ]
+            },
+            {
+                id: 6,
+                icon: '📱',
+                gradient: 'from-purple-600 to-pink-600',
+                title: 'اپلیکیشن موبایل',
+                client: 'استارتاپ دلیوری سریع',
+                duration: '5 ماه',
+                year: '1403',
+                description: 'توسعه اپلیکیشن موبایل برای سرویس دلیوری و ارسال سفارشات با قابلیت ردیابی لحظه‌ای، پرداخت آنلاین، مدیریت سفارشات و سیستم امتیازدهی. این اپ برای اندروید و iOS توسعه داده شد.',
+                features: [
+                    'ثبت سفارش با انتخاب از رستوران‌ها',
+                    'ردیابی لحظه‌ای پیک روی نقشه',
+                    'پرداخت آنلاین و کیف پول داخلی',
+                    'سیستم امتیازدهی به رستوران و پیک',
+                    'نوتیفیکیشن پوش برای وضعیت سفارش',
+                    'لیست آدرس‌های ذخیره شده',
+                    'کوپن تخفیف و برنامه وفاداری',
+                    'چت آنلاین با پیک و رستوران'
+                ],
+                tech: ['React Native', 'Firebase', 'Node.js', 'Google Maps API', 'Socket.io'],
+                results: [
+                    '10000+ نصب در 3 ماه اول',
+                    'میانگین 500 سفارش روزانه',
+                    'امتیاز 4.7 از 5 در استورها',
+                    'افزایش 400% درآمد کسب و کار'
+                ]
+            }
+        ];
+        
+        const defaultConfig = {
+            site_title: 'امیر نصرت زهی',
+            hero_title: 'بهترین خدمات توسعه وب در سراوان',
+            hero_subtitle: 'وب سایت، اپلیکیشن و فروشگاه آنلاین شما را با کیفیت بالا و قیمت مناسب می‌سازیم',
+            cta_button: 'همین حالا سفارش دهید',
+            background_color: '#0a0a1a',
+            surface_color: '#1a1a2e',
+            text_color: '#ffffff',
+            primary_action_color: '#6366f1',
+            secondary_action_color: '#8b5cf6'
+        };
+        
+        const dataHandler = {
+            onDataChanged(data) {
+                allRequests = data || [];
+                if (document.getElementById('page-dashboard').classList.contains('active')) {
+                    renderDashboard();
+                }
+            }
+        };
+        
+        function handleLogoClick() {
+            logoClickCount++;
+            
+            if (logoClickTimer) {
+                clearTimeout(logoClickTimer);
+            }
+            
+            if (logoClickCount >= 5) {
+                navigateTo('dashboard');
+                logoClickCount = 0;
+                return;
+            }
+            
+            logoClickTimer = setTimeout(() => {
+                if (logoClickCount < 5) {
+                    navigateTo('home');
+                }
+                logoClickCount = 0;
+            }, 2000);
+        }
+        
+        function navigateTo(page) {
+            document.querySelectorAll('.page').forEach(p => {
+                p.classList.remove('active');
+            });
+            
+            const targetPage = document.getElementById(`page-${page}`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                closeMobileMenu();
+                
+                if (page === 'dashboard') {
+                    renderDashboard();
+                }
+            }
+        }
+        
+        function openMobileMenu() {
+            document.getElementById('mobileMenu').classList.add('open');
+            document.getElementById('mobileOverlay').classList.add('show');
+        }
+        
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
+            document.getElementById('mobileOverlay').classList.remove('show');
+        }
+        
+        function showNotification(message, type = 'success') {
+            const notif = document.getElementById('notification');
+            const icon = document.getElementById('notifIcon');
+            const text = document.getElementById('notifText');
+            
+            if (type === 'success') {
+                icon.textContent = '✓';
+                notif.className = 'notification success';
+            } else if (type === 'error') {
+                icon.textContent = '✗';
+                notif.className = 'notification error';
+            } else if (type === 'warning') {
+                icon.textContent = '⚠';
+                notif.className = 'notification warning';
+            }
+            
+            text.textContent = message;
+            notif.classList.add('show');
+            
+            setTimeout(() => {
+                notif.classList.remove('show');
+            }, 4000);
+        }
+        
+        function showPortfolioModal(projectId) {
+            const project = portfolioData.find(p => p.id === projectId);
+            if (!project) return;
+            
+            const modalContent = document.getElementById('portfolioModalContent');
+            modalContent.innerHTML = `
+                <div class="p-10">
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="flex items-center gap-6">
+                            <div class="text-8xl">${project.icon}</div>
+                            <div>
+                                <h2 class="text-4xl font-bold mb-2">${project.title}</h2>
+                                <p class="text-xl text-gray-400">${project.client}</p>
+                            </div>
+                        </div>
+                        <button onclick="closePortfolioModal()" class="text-5xl hover:text-red-500 transition-colors">&times;</button>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="card text-center bg-gradient-to-br from-indigo-900/30 to-purple-900/30">
+                            <div class="text-4xl mb-3">⏱️</div>
+                            <p class="text-gray-400 mb-2">مدت زمان</p>
+                            <p class="text-2xl font-bold">${project.duration}</p>
+                        </div>
+                        <div class="card text-center bg-gradient-to-br from-purple-900/30 to-pink-900/30">
+                            <div class="text-4xl mb-3">📅</div>
+                            <p class="text-gray-400 mb-2">سال اجرا</p>
+                            <p class="text-2xl font-bold">${project.year}</p>
+                        </div>
+                        <div class="card text-center bg-gradient-to-br from-green-900/30 to-teal-900/30">
+                            <div class="text-4xl mb-3">✅</div>
+                            <p class="text-gray-400 mb-2">وضعیت</p>
+                            <p class="text-2xl font-bold">تکمیل شده</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-8">
+                        <h3 class="text-3xl font-bold mb-4">درباره پروژه</h3>
+                        <p class="text-xl text-gray-300 leading-relaxed">${project.description}</p>
+                    </div>
+                    
+                    <div class="card mb-8">
+                        <h3 class="text-3xl font-bold mb-6">امکانات و ویژگی‌ها</h3>
+                        <ul class="grid md:grid-cols-2 gap-4">
+                            ${project.features.map(feature => `
+                                <li class="flex items-start gap-3 text-lg">
+                                    <span class="text-green-400 text-2xl">✓</span>
+                                    <span class="text-gray-300">${feature}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="card mb-8">
+                        <h3 class="text-3xl font-bold mb-6">تکنولوژی‌های استفاده شده</h3>
+                        <div class="flex flex-wrap gap-3">
+                            ${project.tech.map(tech => `
+                                <span class="tech-badge">${tech}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-8">
+                        <h3 class="text-3xl font-bold mb-6">نتایج و دستاوردها</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            ${project.results.map(result => `
+                                <div class="flex items-start gap-4 p-4 bg-gradient-to-br from-indigo-900/20 to-purple-900/20 rounded-xl">
+                                    <span class="text-3xl">🎯</span>
+                                    <p class="text-lg text-gray-300">${result}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button onclick="navigateTo('contact')" class="btn-primary text-xl">
+                            سفارش پروژه مشابه
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('portfolioModal').classList.add('show');
+        }
+        
+        function closePortfolioModal(event) {
+            if (!event || event.target.id === 'portfolioModal') {
+                document.getElementById('portfolioModal').classList.remove('show');
+            }
+        }
+        
+        function renderPortfolioGrid() {
+            const grid = document.getElementById('portfolioGrid');
+            if (!grid) return;
+            
+            grid.innerHTML = portfolioData.map(project => `
+                <div class="portfolio-item cursor-pointer" onclick="showPortfolioModal(${project.id})">
+                    <div class="bg-gradient-to-br ${project.gradient} aspect-video rounded-2xl flex items-center justify-center text-9xl">
+                        ${project.icon}
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="text-3xl font-bold mb-4">${project.title}</h3>
+                        <p class="text-lg mb-6">${project.client}</p>
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            ${project.tech.slice(0, 2).map(tech => `
+                                <span class="tech-badge">${tech}</span>
+                            `).join('')}
+                        </div>
+                        <div class="mt-6 text-lg font-bold">کلیک برای مشاهده جزئیات</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        async function handleContactSubmit(event) {
+            event.preventDefault();
+            
+            if (allRequests.length >= 999) {
+                showNotification('حداکثر تعداد درخواست‌ها (999) ثبت شده است. لطفا با مدیر سایت تماس بگیرید.', 'error');
+                return;
+            }
+            
+            const btn = document.getElementById('contactSubmitBtn');
+            const originalText = btn.innerHTML;
+            
+            btn.disabled = true;
+            btn.innerHTML = 'در حال ارسال...<span class="spinner"></span>';
+            
+            const name = document.getElementById('contact-name').value;
+            const phone = document.getElementById('contact-phone').value;
+            const email = document.getElementById('contact-email').value;
+            const service = document.getElementById('contact-service').value;
+            const message = document.getElementById('contact-message').value;
+            
+            const requestData = {
+                name: name,
+                phone: phone,
+                email: email || 'ندارد',
+                service: service,
+                message: message,
+                created_at: new Date().toISOString()
+            };
+            
+            if (window.dataSdk) {
+                const result = await window.dataSdk.create(requestData);
+                
+                if (result.isOk) {
+                    document.getElementById('contactForm').reset();
+                    showNotification('درخواست شما با موفقیت ثبت شد. به زودی با شما تماس می‌گیریم.', 'success');
+                } else {
+                    showNotification('خطا در ثبت درخواست. لطفا دوباره تلاش کنید.', 'error');
+                }
+            } else {
+                setTimeout(() => {
+                    document.getElementById('contactForm').reset();
+                    showNotification('درخواست شما با موفقیت ثبت شد. به زودی با شما تماس می‌گیریم.', 'success');
+                }, 1500);
+            }
+            
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+        }
+        
+        function renderDashboard() {
+            updateStats();
+            renderRequestsTable(allRequests);
+        }
+        
+        function updateStats() {
+            const total = allRequests.length;
+            const now = new Date();
+            const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const weekStart = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+            const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+            
+            const today = allRequests.filter(r => new Date(r.created_at) >= todayStart).length;
+            const week = allRequests.filter(r => new Date(r.created_at) >= weekStart).length;
+            const month = allRequests.filter(r => new Date(r.created_at) >= monthStart).length;
+            
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('todayCount').textContent = today;
+            document.getElementById('weekCount').textContent = week;
+            document.getElementById('monthCount').textContent = month;
+        }
+        
+        function renderRequestsTable(requests) {
+            const container = document.getElementById('requestsTableContainer');
+            
+            if (!requests || requests.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📭</div>
+                        <h3 class="text-2xl font-bold mb-4">هنوز درخواستی ثبت نشده</h3>
+                        <p class="text-gray-400 text-lg">درخواست‌های ثبت شده از فرم تماس در اینجا نمایش داده می‌شوند</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const sortedRequests = [...requests].sort((a, b) => 
+                new Date(b.created_at) - new Date(a.created_at)
+            );
+            
+            let tableHTML = `
+                <div class="overflow-x-auto">
+                    <table class="dashboard-table">
+                        <thead>
+                            <tr>
+                                <th>ردیف</th>
+                                <th>نام</th>
+                                <th>تلفن</th>
+                                <th>ایمیل</th>
+                                <th>خدمت</th>
+                                <th>پیام</th>
+                                <th>تاریخ</th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="requestsTableBody">
+            `;
+            
+            sortedRequests.forEach((req, index) => {
+                const date = new Date(req.created_at);
+                const dateStr = date.toLocaleDateString('fa-IR');
+                const timeStr = date.toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' });
+                
+                tableHTML += `
+                    <tr data-id="${req.__backendId}">
+                        <td>${index + 1}</td>
+                        <td><strong>${escapeHtml(req.name)}</strong></td>
+                        <td dir="ltr">${escapeHtml(req.phone)}</td>
+                        <td>${escapeHtml(req.email)}</td>
+                        <td><span class="badge badge-success">${escapeHtml(req.service)}</span></td>
+                        <td style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(req.message)}">${escapeHtml(req.message)}</td>
+                        <td dir="ltr" style="white-space: nowrap;">${dateStr}<br>${timeStr}</td>
+                        <td>
+                            <button onclick="deleteRequest('${req.__backendId}')" class="btn-danger" style="padding: 8px 16px; font-size: 14px;">
+                                حذف
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            tableHTML += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            container.innerHTML = tableHTML;
+        }
+        
+        async function deleteRequest(backendId) {
+            const request = allRequests.find(r => r.__backendId === backendId);
+            if (!request) return;
+            
+            const row = document.querySelector(`tr[data-id="${backendId}"]`);
+            if (row) {
+                const deleteBtn = row.querySelector('button');
+                const originalText = deleteBtn.innerHTML;
+                deleteBtn.disabled = true;
+                deleteBtn.innerHTML = 'در حال حذف...<span class="spinner"></span>';
+                
+                if (window.dataSdk) {
+                    const result = await window.dataSdk.delete(request);
+                    
+                    if (result.isOk) {
+                        showNotification('درخواست با موفقیت حذف شد', 'success');
+                    } else {
+                        showNotification('خطا در حذف درخواست', 'error');
+                        deleteBtn.disabled = false;
+                        deleteBtn.innerHTML = originalText;
+                    }
+                }
+            }
+        }
+        
+        function filterRequests() {
+            const filter = document.getElementById('serviceFilter').value;
+            if (!filter) {
+                renderRequestsTable(allRequests);
+            } else {
+                const filtered = allRequests.filter(r => r.service === filter);
+                renderRequestsTable(filtered);
+            }
+        }
+        
+        async function refreshDashboard() {
+            const btn = document.getElementById('refreshBtn');
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = 'در حال بروزرسانی...<span class="spinner"></span>';
+            
+            setTimeout(() => {
+                renderDashboard();
+                showNotification('داده‌ها بروزرسانی شد', 'success');
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }, 500);
+        }
+        
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return String(text).replace(/[&<>"']/g, m => map[m]);
+        }
+        
+        async function onConfigChange(config) {
+            const siteTitle = document.getElementById('siteTitle');
+            if (siteTitle) siteTitle.textContent = config.site_title || defaultConfig.site_title;
+            
+            const heroTitle = document.getElementById('heroTitle');
+            if (heroTitle) heroTitle.textContent = config.hero_title || defaultConfig.hero_title;
+            
+            const heroSubtitle = document.getElementById('heroSubtitle');
+            if (heroSubtitle) heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+            
+            const ctaButton = document.getElementById('ctaButton');
+            if (ctaButton) ctaButton.textContent = config.cta_button || defaultConfig.cta_button;
+            
+            document.documentElement.style.setProperty('--bg-dark', config.background_color || defaultConfig.background_color);
+            document.documentElement.style.setProperty('--surface', config.surface_color || defaultConfig.surface_color);
+            document.documentElement.style.setProperty('--text', config.text_color || defaultConfig.text_color);
+            document.documentElement.style.setProperty('--primary', config.primary_action_color || defaultConfig.primary_action_color);
+            document.documentElement.style.setProperty('--secondary', config.secondary_action_color || defaultConfig.secondary_action_color);
+        }
+        
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig: defaultConfig,
+                onConfigChange: onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [
+                        {
+                            get: () => config.background_color || defaultConfig.background_color,
+                            set: (value) => {
+                                window.elementSdk.config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.surface_color || defaultConfig.surface_color,
+                            set: (value) => {
+                                window.elementSdk.config.surface_color = value;
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.text_color || defaultConfig.text_color,
+                            set: (value) => {
+                                window.elementSdk.config.text_color = value;
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                            set: (value) => {
+                                window.elementSdk.config.primary_action_color = value;
+                                window.elementSdk.setConfig({ primary_action_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                            set: (value) => {
+                                window.elementSdk.config.secondary_action_color = value;
+                                window.elementSdk.setConfig({ secondary_action_color: value });
+                            }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: undefined,
+                    fontSizeable: undefined
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ['site_title', config.site_title || defaultConfig.site_title],
+                    ['hero_title', config.hero_title || defaultConfig.hero_title],
+                    ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+                    ['cta_button', config.cta_button || defaultConfig.cta_button]
+                ])
+            });
+        }
+        
+        if (window.dataSdk) {
+            window.dataSdk.init(dataHandler);
+        }
+        
+        renderPortfolioGrid();
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b4061a0f045d344',t:'MTc2Njc1MDA0NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
