@@ -14,8 +14,8 @@
     <meta name="keywords" content="توسعه وب, طراحی وب, امیر نصرت زهی, Amir Star, طراحی سایت, برنامه نویسی وب">
     <meta name="author" content="امیر نصرت زهی">
 
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
+    
     <link rel="icon" type="image/jpeg" href="favicon.png.jpg">
     <link rel="apple-touch-icon" href="favicon.png.jpg">
     
@@ -44,14 +44,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        /* حفظ تمامی انیمیشن‌ها و استایل‌های اصلی شما */
-        * { 
-            font-family: 'Vazirmatn', sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-        }
-        
+        /* حفظ تمامی تنظیمات ظاهری و متغیرهای رنگی شما */
         :root {
             --bg-dark: #0a0a1a;
             --bg-darker: #050510;
@@ -65,6 +58,13 @@
             --success: #10b981;
             --warning: #f59e0b;
             --error: #ef4444;
+        }
+
+        * { 
+            font-family: 'Vazirmatn', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
         }
 
         html, body {
@@ -87,7 +87,7 @@
             overflow-x: hidden;
         }
         
-        /* بازگردانی دقیق انیمیشن‌های شما */
+        /* بازگردانی کامل تمامی انیمیشن‌های اختصاصی شما */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -123,20 +123,20 @@
             100% { background-position: 1000px 0; }
         }
         
+        /* کلاس‌های انیمیشن فعال */
         .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
         .animate-slide-in { animation: slideIn 0.6s ease-out forwards; }
         .animate-glow { animation: glow 3s ease-in-out infinite; }
         .animate-float { animation: float 4s ease-in-out infinite; }
         .animate-pulse-soft { animation: pulse 3s ease-in-out infinite; }
         .animate-rotate { animation: rotate 20s linear infinite; }
-        
         .animate-shimmer { 
             background: linear-gradient(to right, #1a1a2e 4%, #252540 25%, #1a1a2e 36%);
             background-size: 1000px 100%;
             animation: shimmer 2s infinite linear; 
         }
         
-        /* استایل دکمه اصلی (بدون تغییر ظاهر) */
+        /* استایل دکمه اصلی Amir Star */
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
@@ -145,7 +145,7 @@
             font-weight: 700;
             border: none;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
             font-size: 18px;
@@ -159,6 +159,8 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
         }
+    </style>
+</head>
    
         
         .btn-primary:hover {
@@ -2390,6 +2392,7 @@
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b4061a0f045d344',t:'MTc2Njc1MDA0NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 
 </html>
+
 
 
 
